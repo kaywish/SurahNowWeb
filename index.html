@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SurahNow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a12;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    /* Background Glow */
+
+    .bg-glow {
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+      top: -250px;
+      right: -200px;
+      z-index: -1;
+    }
+
+    /* Header */
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10,10,18,0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #C9A84C;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      color: #AFAFC2;
+      font-size: 15px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #141420 0%, #1b1b2b 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 32px;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+      top: -100px;
+      right: -80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-subtitle {
+      color: #C9A84C;
+      font-weight: 600;
+      margin-bottom: 18px;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 62px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      color: #AFAFC2;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #C9A84C;
+      color: #111111;
+      padding: 16px 28px;
+      border-radius: 18px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ffffff;
+      padding: 16px 28px;
+      border-radius: 18px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* Features */
+
+    .features {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: #AFAFC2;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #141420;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 32px;
+      transition: 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.3);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 18px;
+      margin-bottom: 24px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .feature-card p {
+      color: #AFAFC2;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 50px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: #AFAFC2;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #AFAFC2;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    @media(max-width: 992px) {
+
+      .hero-card {
+        padding: 40px 30px;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 600px) {
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+
+<header>
+  <div class="container nav">
+    <div class="logo">SurahNow</div>
+
+    <div class="nav-links">
+      <!-- <a href="support.html">Support</a> -->
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-card">
+
+      <div class="hero-content">
+
+        <div class="hero-subtitle">
+          Quran Companion App
+        </div>
+
+        <h1>
+          Read, Reflect & Stay Connected Daily
+        </h1>
+
+        <p>
+          SurahNow helps you stay connected to the Quran with a modern and
+          peaceful reading experience, prayer-based content, daily reflections,
+          and beautifully designed reading tools built for everyday use.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">
+            Coming Soon on the App Store
+          </a>
+
+          <!-- <a href="support.html" class="btn-secondary">
+            Contact Support
+          </a> -->
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="features">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Built for Daily Reflection</h2>
+
+      <p>
+        A clean and immersive Quran reading experience designed with simplicity,
+        focus, and accessibility in mind.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+
+        <h3>Prayer-Based Experience</h3>
+
+        <p>
+          Dynamic content and reading flow inspired by prayer times throughout the day.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+
+        <h3>Modern Reading UI</h3>
+
+        <p>
+          Beautiful dark themed layouts with smooth navigation and distraction-free reading.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+
+        <h3>Daily Quran Access</h3>
+
+        <p>
+          Quickly open and continue your Quran reading journey anytime, anywhere.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container footer-content">
+
+    <p>
+      © 2026 SurahNow. All rights reserved.
+    </p>
+
+    <div class="footer-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
